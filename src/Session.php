@@ -254,12 +254,7 @@ class Session
      */
     protected function sessionStatus()
     {
-        $setting = 'session.use_trans_sid';
-        $current = $this->phpfunc->ini_get($setting);
-        $level   = $this->phpfunc->error_reporting(0);
-        $result  = $this->phpfunc->ini_set($setting, $current);
-        $this->phpfunc->error_reporting($level);
-        return $result !== $current;
+        return session_id() !== '';
     }
 
     /**
